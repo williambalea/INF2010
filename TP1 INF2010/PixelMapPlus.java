@@ -56,8 +56,9 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void negate()
 	{
-		// compléter
-		
+		for (int hauteur = 0; hauteur < height; hauteur++)
+			for(int largeur = 0; largeur < width; largeur++)
+				imageData[hauteur][largeur] = imageData[hauteur][largeur].Negative();
 	}
 	
 	/**
@@ -65,8 +66,10 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void convertToBWImage()
 	{
-		// compléter
-		
+		for (int hauteur = 0; hauteur < height; hauteur++)
+			for(int largeur = 0; largeur < width; largeur++)
+				imageData[hauteur][largeur] = imageData[hauteur][largeur].toBWPixel();
+		imageType = imageType.BW;
 	}
 	
 	/**
@@ -74,8 +77,10 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void convertToGrayImage()
 	{
-		// compléter
-		
+		for (int hauteur = 0; hauteur < height; hauteur++)
+			for(int largeur = 0; largeur < width; largeur++)
+				imageData[hauteur][largeur] = imageData[hauteur][largeur].toGrayPixel();
+		imageType = imageType.Gray;
 	}
 	
 	/**
@@ -83,14 +88,18 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void convertToColorImage()
 	{
-		// compléter
-		
+		for (int hauteur = 0; hauteur < height; hauteur++)
+			for(int largeur = 0; largeur < width; largeur++)
+				imageData[hauteur][largeur] = imageData[hauteur][largeur].toColorPixel();
+		imageType = imageType.Color;
 	}
 	
 	public void convertToTransparentImage()
 	{
-		// compléter
-		
+		for (int hauteur = 0; hauteur < height; hauteur++)
+			for(int largeur = 0; largeur < width; largeur++)
+				imageData[hauteur][largeur] = imageData[hauteur][largeur].toTransparentPixel();
+		imageType = imageType.Transparent;
 	}
 	
 	
@@ -103,8 +112,10 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	{
 		if(w < 0 || h < 0)
 			throw new IllegalArgumentException();
-		
-		// compléter
+		else {
+			height = h;
+			width = w;
+		}
 		
 	}
 	
@@ -113,8 +124,9 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void insert(PixelMap pm, int row0, int col0)
 	{
-		// compléter
-		
+		for(int hauteur = row0; hauteur < height ; hauteur++)
+			for(int largeur = col0; largeur < width ; largeur++)
+				imageData[hauteur][largeur] = pm[][];
 	}
 	
 	/**
