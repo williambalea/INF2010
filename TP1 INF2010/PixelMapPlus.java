@@ -113,6 +113,29 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 		if(w < 0 || h < 0)
 			throw new IllegalArgumentException();
 		else {
+			AbstractPixel[][] newImageData = new AbstractPixel[h][w];
+			int hpercent;
+			int wpercent;
+			
+			//on veut rapetisser l'image et prendre un pixel sur 4 par exemple.
+			if (height >= h || width >= w) {
+				hpercent = height/h;
+				wpercent = width/w;
+				for (int j = 0; j < h; j++)
+					for (int i = 0; i < w; i++)
+						newImageData[j][i] = imageData[j * hpercent][i * wpercent];	
+			} 
+			// on veut aggrandir l'image et prendre plusieurs fois le meme pixel. (1 / 2 = 0)
+			else if (height < h || width < w) {
+				hpercent = h/height;
+				wpercent = w/width;
+				for (int j = 0; j < h; j++)
+					for (int i = 0; i < w; i++)
+						newImageData[j][i] = imageData[j / hpercent][i / wpercent];
+			}
+			
+			//On remplace l'ancienne image par la nouvelle 
+			imageData = newImageData;
 			height = h;
 			width = w;
 		}
@@ -123,19 +146,48 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 * Insert pm dans l'image a la position row0 col0
 	 */
 	public void insert(PixelMap pm, int row0, int col0)
-	{
-		for(int hauteur = row0; hauteur < height ; hauteur++)
-			for(int largeur = col0; largeur < width ; largeur++)
-				imageData[hauteur][largeur] = pm[][];
+	{		
+		for (int j = 0; j < pm.height; j++)
+			for (int i = 0; i < pm.width; i++)
+				if ((j + row0 < height) || (i + col0 < width))
+					imageData[j + row0][i + col0] = pm.imageData[j][i];
 	}
 	
 	/**
 	 * Decoupe l'image 
 	 */
-	public void crop(int h, int w)
+	public void crop(int h, int w) throws IllegalArgumentException
 	{
-		// compléter		
-		
+				
+		if(w < 0 || h < 0)
+			throw new IllegalArgumentException();
+		else {
+			AbstractPixel[][] newImageData = new AbstractPixel[h][w];
+			AbstractPixel blanc;
+			switch(imageType) {
+			case BW : blanc = new BWPixel(); 
+					break;
+			case Gray : blanc = new GrayPixel();
+					break;
+			case Color : blanc = new ColorPixel();
+					break;
+			default : blanc = new TransparentPixel();
+					break;
+			}
+			
+			for (int j = 0; j < h; j++)
+				for (int i = 0; i < w; i++)
+					newImageData[j][i] = blanc;
+			
+			for (int hauteur = 0 ; hauteur < height; hauteur++)
+				for (int largeur = 0; largeur < width; largeur++)
+					newImageData[hauteur][largeur] = imageData[hauteur][largeur];
+			
+			//On remplace l'ancienne image par la nouvelle 
+			imageData = newImageData;
+			height = h;
+			width = w;
+		}
 	}
 	
 	/**
@@ -143,8 +195,29 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 	 */
 	public void translate(int rowOffset, int colOffset)
 	{
-		// compléter		
+		AbstractPixel[][] newImageData = new AbstractPixel[height][width];
+		AbstractPixel blanc;
+		switch(imageType) {
+		case BW : blanc = new BWPixel(); 
+				break;
+		case Gray : blanc = new GrayPixel();
+				break;
+		case Color : blanc = new ColorPixel();
+				break;
+		default : blanc = new TransparentPixel();
+				break;
+		}
 		
+		for (int j = 0; j < height; j++)
+			for (int i = 0; i < width; i++)
+				newImageData[j][i] = blanc;
+		
+		for (int j = rowOffset; j >= 0 && j < height; j++)
+			for (int i = colOffset; i >= 0 && i < width; i++)
+				newImageData[j][i] = imageData[j - rowOffset][i - colOffset];
+		
+		//on remplace l'ancienne image par la nouvelle
+		imageData = newImageData;
 	}
 	
 }
