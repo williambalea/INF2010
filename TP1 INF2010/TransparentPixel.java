@@ -1,7 +1,7 @@
 /**
- * Classe de pixel transparent
- * @author :
- * @date : 
+ * Classe Pixel Transparent
+ * @author Dalyna Pak et William Balea
+ * @date : 19 septembre 2018
  */
 
 public class TransparentPixel extends AbstractPixel

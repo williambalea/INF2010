@@ -2,8 +2,8 @@
  * Classe PixelMap
  * Image de type noir et blanc, tons de gris ou couleurs
  * Peut lire et ecrire des fichiers PNM
- * @author : 
- * @date   : 
+ * @author Dalyna Pak et William Balea
+ * @date : 19 septembre 2018
  */
 
 import java.io.*;

@@ -1,7 +1,7 @@
 /**
- * Classe de pixel noir et blanc
- * @author Tarek Ould Bachir, Wail Khemir
- * @date : 2015-09-06
+ * Classe BWPixel
+ * @author Dalyna Pak et William Balea
+ * @date : 19 septembre 2018
  */
 
 public class BWPixel extends AbstractPixel 

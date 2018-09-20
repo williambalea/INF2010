@@ -5,8 +5,8 @@ import java.awt.PageAttributes.ColorType;
  * Image de type noir et blanc, tons de gris ou couleurs
  * Peut lire et ecrire des fichiers PNM
  * Implemente les methodes de ImageOperations
- * @author : 
- * @date   : 
+ * @author Dalyna Pak et William Balea
+ * @date : 19 septembre 2018
  */
 
 public class PixelMapPlus extends PixelMap implements ImageOperations 
@@ -212,9 +212,10 @@ public class PixelMapPlus extends PixelMap implements ImageOperations
 			for (int i = 0; i < width; i++)
 				newImageData[j][i] = blanc;
 		
-		for (int j = rowOffset; j >= 0 && j < height; j++)
-			for (int i = colOffset; i >= 0 && i < width; i++)
-				newImageData[j][i] = imageData[j - rowOffset][i - colOffset];
+		for (int j = 0; j < height; j++)
+			for (int i = 0; i < width; i++)
+				if ( (j + rowOffset) >= 0 && (i + colOffset) >= 0 && (j + rowOffset) < height && (i + colOffset) < width)
+					newImageData[j + rowOffset][i + colOffset] = imageData[j][i];
 		
 		//on remplace l'ancienne image par la nouvelle
 		imageData = newImageData;

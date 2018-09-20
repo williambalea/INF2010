@@ -1,7 +1,7 @@
 /**
  * Classe de pixel en tons de gris
- * @author :
- * @date : 
+ * @author : Dalyna Pak et William Balea
+ * @date : 19 septembre 2018
  */
 
 public class GrayPixel  extends AbstractPixel 

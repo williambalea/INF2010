@@ -1,3 +1,8 @@
+/**
+ * Classe de la liste liée
+ * @author Dalyna Pak et William Balea
+ * @date : 19 septembre 2018
+ */
 
 public class LinkedListQueue<AnyType> implements Queue<AnyType>
 {	
@@ -7,6 +12,7 @@ public class LinkedListQueue<AnyType> implements Queue<AnyType>
 	{
 		private AnyType data;
 		private Node next;
+		
 		
 		public Node(AnyType data, Node next) 
 		{
@@ -32,6 +38,7 @@ public class LinkedListQueue<AnyType> implements Queue<AnyType>
    
 	private int size = 0;		//Nombre d'elements dans la file.
 	private Node<AnyType> last;	//Dernier element de la liste
+	private Node<AnyType> first; // Premier element de la liste
 	
 	//Indique si la file est vide
 	public boolean empty() 
@@ -50,23 +57,33 @@ public class LinkedListQueue<AnyType> implements Queue<AnyType>
 	//complexité asymptotique: O(1)
 	public AnyType peek()
 	{
-		//A completer
-		
+	if(empty())
+		return null;
+	else
+		return first.getData();
 	}
 	
 	//Retire l'element en tete de file
 	//complexité asymptotique: O(1)
 	public void pop() throws EmptyQueueException
 	{
-		//A completer
-		
+		if (empty())
+			throw new EmptyQueueException();
+		if (size > 1) 
+			first = first.getNext();
+		else if (size == 1)
+			first = null;
+		size--;
 	}
 	
 	//Ajoute un element a la fin de la file
 	//complexité asymptotique: O(1)
 	public void push(AnyType item)
 	{		
-		//A completer
+		Node<AnyType> nouveauNode = new Node<AnyType>(item, null);
+		last.setNext(nouveauNode);
+		last = nouveauNode;
+		size++;
 		
 	}  
 }

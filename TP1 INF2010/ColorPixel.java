@@ -1,7 +1,7 @@
 /**
- * Classe de pixel en couleurs 
- * @author :
- * @date : 
+ * Classe Pixel de couleur
+ * @author Dalyna Pak et William Balea
+ * @date : 19 septembre 2018
  */
 
 public class ColorPixel extends AbstractPixel
