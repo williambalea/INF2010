@@ -64,7 +64,7 @@ public class LinearSpacePerfectHashing<AnyType>
 	
 	public int getKey (AnyType x) {
 		// A completer
-		
+		return ((a * x.hashCode() + b) mod p ) mod m;
 	}
 	
 	public boolean containsValue (AnyType x) {

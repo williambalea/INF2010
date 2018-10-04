@@ -19,6 +19,21 @@ class Subset {
     }
      
     
+    int i = 0;
+    int j = 0;
+    for (i = 0; i < n; i++)
+    {   for (j = 0; j < m; j++)
+        {    if(Tab2[i] == Tab1[j])
+                break;
+        }             
+        if (j == m)
+            return false;
+    }
+    return true;
+    
+    
+    
+    
     public static void main(String args[])
     {
         int T1[] = {5, 11, 12, 1, 10, 3, 7};

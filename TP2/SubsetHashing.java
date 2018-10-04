@@ -6,6 +6,7 @@ public class SubsetHashing {
 	static boolean isSubset(int Tab1[], int Tab2[], int m, int n)
     {
         // compléter 
+		if (Tab1[m % 7])
         return true;
     } 
  

@@ -33,22 +33,32 @@ public class QuadraticSpacePerfectHashing<AnyType>
 	public boolean containsKey(int key)
 	{
 		// A completer
+		if (items[key % Size()] == null)
+			return false;
+		else
+			return true;
 
 	}
 
 	public boolean containsValue(AnyType x )
 	{
 		// A completer
+		if (items[getKey(x)] == null)
+			return false;
+		else
+			return true;
+
 
 	}
 
 	public void remove (AnyType x) {
 		// A completer
-
+		items[getKey(x)] = null;
 	}
 
 	public int getKey (AnyType x) {
 		// A completer
+		return ((a * x.hashCode() + b) % p ) % Size();
 		
 	}
 
@@ -60,13 +70,17 @@ public class QuadraticSpacePerfectHashing<AnyType>
 		if(array == null || array.size() == 0)
 		{
 			// A completer
+			ArrayList<AnyType> nouveau = new ArrayList<AnyType>(array.size() + 1);
+			array = nouveau;
 			return;
 		}
 		if(array.size() == 1)
 		{
-			a = b = 0;
+			a = 0;
+			b = 0;
 
-			// A completer			
+			// A completer
+			array.get(0) = null;
 			return;
 		}
 
@@ -86,6 +100,8 @@ public class QuadraticSpacePerfectHashing<AnyType>
 	}
 
 	public void makeEmpty () {
-		   // A completer
+		// A completer
+		for(int i = 0; i < items.length; i++) 
+			items[i] = null;
    	}
 }
