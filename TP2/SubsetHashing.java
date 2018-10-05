@@ -5,8 +5,17 @@ public class SubsetHashing {
     /* Return true si Tab2 [] est un sous-ensemble de Tab1 [] */
 	static boolean isSubset(int Tab1[], int Tab2[], int m, int n)
     {
-        // compléter 
-		if (Tab1[m % 7])
+		HashSet<Integer> hashTable = new HashSet<Integer>(m);
+        for (int i = 0; i < m; i++) 
+        {
+        	hashTable.add(Tab1[i]);
+        }
+        
+        for (int j = 0; j < n; j++)
+        {
+        	if (hashTable.contains(Tab2[j]) == false ) 
+        		return false;
+        }
         return true;
     } 
  

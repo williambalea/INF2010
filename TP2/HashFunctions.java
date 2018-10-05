@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Random;
 
 public class HashFunctions 
@@ -67,25 +68,25 @@ public class HashFunctions
       System.out.println();
       
       // Verifie qu'il fonctionne comme prevu
-      System.out.println( 100 + " est present: " + pfhash.containsValue(100) );
-      System.out.println(  99 + " est present: " + pfhash.containsValue( 99) );
-      System.out.println( 200 + " est present: " + pfhash.containsValue(200) );
-      System.out.println( 199 + " est present: " + pfhash.containsValue(199) );
-      System.out.println( 300 + " est present: " + pfhash.containsValue(300) );
-      System.out.println( 299 + " est present: " + pfhash.containsValue(299) );
-      System.out.println();
+      //System.out.println( 100 + " est present: " + pfhash.containsValue(100) );
+      //System.out.println(  99 + " est present: " + pfhash.containsValue( 99) );
+      //System.out.println( 200 + " est present: " + pfhash.containsValue(200) );
+      //System.out.println( 199 + " est present: " + pfhash.containsValue(199) );
+      //System.out.println( 300 + " est present: " + pfhash.containsValue(300) );
+      //System.out.println( 299 + " est present: " + pfhash.containsValue(299) );
+      //System.out.println();
       
 
-      System.out.println("La clé de 100 est : " + pfhash.getKey(100) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(100)) );
-      System.out.println("La clé de 99 est : " + pfhash.getKey(99) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(99)) );
-      System.out.println("La clé de 200 est : " + pfhash.getKey(200) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(200)) );
-      System.out.println("La clé de 199 est : " + pfhash.getKey(199) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(199)) );
-      System.out.println("La clé de 300 est : " + pfhash.getKey(300) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(300)) );
-      System.out.println("La clé de 299 est : " + pfhash.getKey(299) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(299)) );
-      System.out.println();
+      //System.out.println("La clé de 100 est : " + pfhash.getKey(100) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(100)) );
+      //System.out.println("La clé de 99 est : " + pfhash.getKey(99) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(99)) );
+      //System.out.println("La clé de 200 est : " + pfhash.getKey(200) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(200)) );
+      //System.out.println("La clé de 199 est : " + pfhash.getKey(199) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(199)) );
+      //System.out.println("La clé de 300 est : " + pfhash.getKey(300) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(300)) );
+      //System.out.println("La clé de 299 est : " + pfhash.getKey(299) + ", elle est presente: " + pfhash.containsKey(pfhash.getKey(299)) );
+      //System.out.println();
       
-      System.out.println(pfhash);
-      System.out.println();
+      //System.out.println(pfhash);
+      //System.out.println();
       
       
       /**
@@ -106,8 +107,24 @@ public class HashFunctions
     */
    public static ArrayList<Integer> randomIntegers(int length)
    {
-      return null;
-   }
+	   ArrayList<Integer> tableauRandom = new ArrayList<Integer>(length);
+	   Random generator = new Random( System.nanoTime() );
+	   
+	   
+	   for (int i = 0; i < length; i++) {
+		   
+		   int g = generator.nextInt(p);
+			   
+		   if (tableauRandom.contains(g))
+				tableauRandom.add(g + 1);
+		   else 
+		        tableauRandom.add(g);
+		   }
+	   
+	   
+       return null;
+   
+   } 
 }
 
 
